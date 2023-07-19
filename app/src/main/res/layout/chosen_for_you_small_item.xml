@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.example.e_comm_home_demo_app.data.model.ChosenForYouDTO" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        app:cardElevation="@dimen/_8sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_8sdp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgViewTopSelling"
+                loadImageFromUrl="@{model.thumbNail}"
+                android:layout_width="@dimen/_124sdp"
+                android:layout_height="@dimen/_124sdp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toTopOf="@+id/btnOfferLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/ic_launcher" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOfferLabel"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red"
+                android:letterSpacing="0"
+                android:minHeight="0dp"
+                android:paddingVertical="@dimen/_2sdp"
+                android:text="@{model.offerlabel}"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_12sdp"
+                android:visibility="@{model.price != model.finalPrice ? View.VISIBLE : View.INVISIBLE , default = visible}"
+                app:cornerRadius="@dimen/_4sdp"
+                app:layout_constraintEnd_toEndOf="@+id/imgViewTopSelling"
+                app:layout_constraintStart_toStartOf="@+id/imgViewTopSelling"
+                app:layout_constraintTop_toBottomOf="@+id/imgViewTopSelling"
+                app:layout_constraintBottom_toTopOf="@+id/layoutOffer"
+                tools:text="@string/_40_off" />
+
+            <RelativeLayout
+                android:id="@+id/layoutOffer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/txtViewName"
+                app:layout_constraintEnd_toEndOf="@+id/txtViewName"
+                app:layout_constraintStart_toStartOf="@+id/txtViewName">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtViewFinalPrice2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_2sdp"
+                    android:text="@{model.formattedFinalPrice}"
+                    android:setPriceLabelColor='@{""+String.valueOf(model.price == model.finalPrice)+""}'
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_10sdp"
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="@string/_56_75sar" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtViewFormattedPrice1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/imgViewWishList"
+                    android:layout_toEndOf="@id/txtViewFinalPrice2"
+                    android:text="@{model.formattedPrice}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/_10sdp"
+                    android:visibility="@{model.price != model.finalPrice ? View.VISIBLE : View.GONE , default = visible}"
+                    android:setStrikeThrough='@{model.price != model.finalPrice}'
+                    android:singleLine="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="@string/_32_55sar" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgViewWishList"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:src="@drawable/ic_heart" />
+            </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtViewName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@{model.name}"
+                android:textColor="@color/lightBlack"
+                android:textSize="@dimen/_12sdp"
+                android:singleLine="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="@string/zinc_olive_cream_75_gm" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

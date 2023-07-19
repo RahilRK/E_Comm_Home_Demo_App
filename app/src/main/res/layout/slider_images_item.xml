@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.example.e_comm_home_demo_app.data.model.BannerImageDTO" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/sliderImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            tools:src="@mipmap/ic_launcher"
+            loadImageFromUrl="@{model.url}"
+            android:contentDescription="@string/home_slider_image_recycler_view_item" />
+    </RelativeLayout>
+</layout>

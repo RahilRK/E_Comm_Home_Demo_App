@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.example.e_comm_home_demo_app.data.model.FeaturedCategoryDTO" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgViewCategory"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_64sdp"
+            tools:src="@mipmap/ic_launcher"
+            loadImageFromUrl="@{model.url}"
+            android:padding="@dimen/_8sdp"
+            android:layout_gravity="center_horizontal" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtViewCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            tools:text="@string/categories"
+            android:text="@{model.categoryName}"
+            android:gravity="center" />
+
+    </LinearLayout>
+</layout>

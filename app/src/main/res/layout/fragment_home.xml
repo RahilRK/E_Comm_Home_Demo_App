@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <!--todo variables required to show hide ui-->
+        <variable
+            name="showBannerImages"
+            type="Boolean" />
+
+        <variable
+            name="showFeatureCategory"
+            type="Boolean" />
+
+        <variable
+            name="showOurServices"
+            type="Boolean" />
+
+        <variable
+            name="showShopByBrand"
+            type="Boolean" />
+
+        <variable
+            name="showBanner2"
+            type="Boolean" />
+
+        <variable
+            name="showTopSelling"
+            type="Boolean" />
+
+        <variable
+            name="showBanner2FullWidth"
+            type="Boolean" />
+
+        <variable
+            name="showMostViewed"
+            type="Boolean" />
+
+        <variable
+            name="showBottomSlider"
+            type="Boolean" />
+
+        <variable
+            name="showHotDeals"
+            type="Boolean" />
+
+        <variable
+            name="showChosenForYou"
+            type="Boolean" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeToRefresh"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!--todo Slider Images-->
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/bannerImagesViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_164sdp"
+                        android:visibility="@{showBannerImages ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                        android:id="@+id/dots_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bannerImagesViewPager"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/_16sdp"
+                        android:visibility="@{showBannerImages ? View.VISIBLE : View.GONE , default = visible}"
+                        app:dotsColor="@color/black"
+                        app:dotsSize="@dimen/_8sdp"
+                        app:dotsSpacing="@dimen/_2sdp"
+                        app:dotsStrokeColor="@color/white"
+                        app:dotsWidthFactor="2.5"
+                        app:layout_constraintBottom_toBottomOf="@+id/bannerImagesViewPager"
+                        app:layout_constraintEnd_toEndOf="@+id/bannerImagesViewPager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:progressMode="true" />
+
+                    <!--todo static ui-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutStaticUi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layout_constraintTop_toBottomOf="@id/bannerImagesViewPager">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardPrescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            app:cardElevation="@dimen/_8sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/cardExclusive"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/_8sdp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/_72sdp"
+                                    android:layout_height="@dimen/_72sdp"
+                                    android:src="@drawable/prescription" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_4sdp"
+                                    android:text="@string/prescription_ndispensing"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardExclusive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:layout_marginBottom="9dp"
+                            app:cardElevation="@dimen/_8sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/cardShopOffers"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/cardPrescription"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/_8sdp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/_72sdp"
+                                    android:layout_height="@dimen/_72sdp"
+                                    android:src="@drawable/exclusive_offer" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_4sdp"
+                                    android:text="@string/exclusive_noffers"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardShopOffers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            app:cardElevation="@dimen/_8sdp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/cardExclusive"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/_8sdp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/_72sdp"
+                                    android:layout_height="@dimen/_72sdp"
+                                    android:src="@drawable/shop_offer" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_4sdp"
+                                    android:text="@string/shop_offers_nmagazine"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--todo shop by category title-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewTitleShopByCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/shop_by_category"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        android:visibility="@{showFeatureCategory ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layoutStaticUi" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewViewAllCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:text="@string/view_all"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_12sdp"
+                        android:visibility="@{showFeatureCategory ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtViewTitleShopByCategory"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtViewTitleShopByCategory" />
+
+                    <!--todo shop by category list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyViewCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{showFeatureCategory ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtViewTitleShopByCategory"
+                        app:spanCount="4"
+                        tools:itemCount="8"
+                        tools:listitem="@layout/category_item" />
+
+                    <!--todo our services title-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewOurServices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/our_services"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        android:visibility="@{showOurServices ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rcyViewCategory" />
+
+                    <!--todo our services list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyOurServices"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="@{showOurServices ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtViewOurServices"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/our_services_item" />
+
+                    <!--todo shop by brand title-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewTitleShopByBrands"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/shop_by_brand"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        android:visibility="@{showShopByBrand ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rcyOurServices" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewViewAllShopByBrand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:text="@string/view_all"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_12sdp"
+                        android:visibility="@{showShopByBrand ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtViewTitleShopByBrands"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtViewTitleShopByBrands" />
+
+                    <!--todo shop by brand list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyShopByBrand"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="@{showShopByBrand ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtViewTitleShopByBrands"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/brand_item" />
+
+                    <!--todo banner2 list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyBanner2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:visibility="@{showBanner2 ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rcyShopByBrand"
+                        app:spanCount="2"
+                        tools:itemCount="6"
+                        tools:listitem="@layout/banner2_item" />
+
+                    <!--todo top selling title-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewTitleTopSelling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/top_selling"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        android:visibility="@{showTopSelling ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rcyBanner2" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewViewAllTopSelling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:text="@string/view_all"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_12sdp"
+                        android:visibility="@{showTopSelling ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtViewTitleTopSelling"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtViewTitleTopSelling" />
+
+                    <!--todo top selling list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyTopSelling"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="@{showTopSelling ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtViewTitleTopSelling"
+                        app:spanCount="2"
+                        tools:itemCount="4"
+                        tools:listitem="@layout/top_selling_item" />
+
+                    <!--todo shop by banner2 Full Width list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyBanner2FullWidth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="@{showBanner2FullWidth ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rcyTopSelling"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/banner2_fullwidth_item" />
+
+                    <!--todo Most Viewed title-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewTitleMostViewed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/most_viewed"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        android:visibility="@{showMostViewed ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rcyBanner2FullWidth" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewViewAllMostViewed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:text="@string/view_all"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_12sdp"
+                        android:visibility="@{showMostViewed ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtViewTitleMostViewed"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtViewTitleMostViewed" />
+
+                    <!--todo Most Viewed list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyMostViewed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="@{showMostViewed ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtViewTitleMostViewed"
+                        app:spanCount="2"
+                        tools:itemCount="4"
+                        tools:listitem="@layout/most_viewed_item" />
+
+                    <!--todo Slider Images-->
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/bottomSliderViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_124sdp"
+                        android:layout_marginHorizontal="@dimen/_8sdp"
+                        android:visibility="@{showBottomSlider ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rcyMostViewed"
+                        />
+
+                    <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                        android:id="@+id/dots_indicator_bottom_slider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/bannerImagesViewPager"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="@dimen/_16sdp"
+                        android:visibility="@{showBottomSlider ? View.VISIBLE : View.GONE , default = visible}"
+                        app:dotsColor="@color/black"
+                        app:dotsSize="@dimen/_8sdp"
+                        app:dotsSpacing="@dimen/_2sdp"
+                        app:dotsStrokeColor="@color/white"
+                        app:dotsWidthFactor="2.5"
+                        app:layout_constraintBottom_toBottomOf="@+id/bottomSliderViewPager"
+                        app:layout_constraintEnd_toEndOf="@+id/bottomSliderViewPager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:progressMode="true" />
+
+                    <!--todo shop by chosen for you title-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewTitleChosenForYou"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/chosen_for_you"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        android:visibility="@{showChosenForYou ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/bottomSliderViewPager" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewViewAllChosenForYou"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:text="@string/view_all"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/_12sdp"
+                        android:visibility="@{showChosenForYou ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtViewTitleChosenForYou"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/txtViewTitleChosenForYou" />
+
+                    <!--todo shop by chosen for you list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyViewChosenForYou"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="@{showChosenForYou ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtViewTitleChosenForYou"
+                        tools:listitem="@layout/chosen_for_you_large_item" />
+
+                    <!--todo hot deals title-->
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtViewHotDeals"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/hot_deals"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        android:visibility="@{showHotDeals ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rcyViewChosenForYou" />
+
+                    <!--todo our services list-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcyHotDeals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="@{showHotDeals ? View.VISIBLE : View.GONE , default = visible}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtViewHotDeals"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/hot_deals_item" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

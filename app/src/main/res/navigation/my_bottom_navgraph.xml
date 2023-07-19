@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_tab_navgraph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/prescriptionsFragment"
+        android:name="com.example.e_comm_home_demo_app.presentation.prescriptions.PrescriptionsFragment"
+        android:label="@string/prescriptions" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.e_comm_home_demo_app.presentation.categories.CategoryFragment"
+        android:label="@string/categories" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.e_comm_home_demo_app.presentation.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_viewAllCategoryFragment"
+            app:destination="@id/viewAllCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/offersFragment"
+        android:name="com.example.e_comm_home_demo_app.presentation.offers.OffersFragment"
+        android:label="@string/offers" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.e_comm_home_demo_app.presentation.profile.ProfileFragment"
+        android:label="@string/profile" />
+    <fragment
+        android:id="@+id/viewAllCategoryFragment"
+        android:name="com.example.e_comm_home_demo_app.presentation.viewAllCategory.ViewAllCategoryFragment"
+        android:label="@string/view_all" />
+</navigation>
