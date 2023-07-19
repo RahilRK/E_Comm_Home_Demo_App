@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         /*todo setup bottom navigation*/
         navController = findNavController(R.id.fragment)
         binding.bottomNavigationView.setupWithNavController(navController)
